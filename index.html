@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rick Sauls — Retail & eCommerce Advisor</title>
+  <meta name="description" content="Helping retail and CPG brands bridge the gap between AI experimentation and operational scale.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #050505;
+      --graphite: #121212;
+      --graphite2: #1A1A1A;
+      --faint: #2A2A2A;
+      --mid-gray: #4A4A4A;
+      --cool-gray: #8C8C8C;
+      --soft-white: #F3F3F3;
+      --red: #FF3B30;
+      --red-dim: #D8322A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--soft-white);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Override all font-family declarations to Inter */
+    .nav-links a, .hero-label, .hero-label::before,
+    .section-label, .timeline-year, .timeline-org,
+    .service-number, .preview-label, .preview-category,
+    .w4w-subtitle, .footer-copy, .footer-links a,
+    .contact-link-label, .btn-primary, .btn-secondary {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .nav-monogram span, h1, h2, .w4w-title, .service-title {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 48px;
+      background: rgba(5,5,5,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--graphite2);
+    }
+
+    .nav-mark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-monogram {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--soft-white);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+
+    .nav-monogram span {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      color: var(--soft-white);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-monogram::after {
+      content: '';
+      position: absolute;
+      bottom: 4px; left: 6px;
+      width: 10px; height: 2px;
+      background: var(--red);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: var(--cool-gray);
+      text-decoration: none;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--soft-white); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--graphite2) 1px, transparent 1px),
+        linear-gradient(90deg, var(--graphite2) 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: 0.35;
+    }
+
+    .hero-gradient {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 80%, rgba(255,59,48,0.06) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(18,18,18,0.8) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
+
+    .hero-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      color: var(--red);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-label::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--red);
+    }
+
+    h1 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: clamp(52px, 7vw, 96px);
+      line-height: 0.95;
+      letter-spacing: -2px;
+      color: var(--soft-white);
+      margin-bottom: 32px;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--cool-gray);
+    }
+
+    .hero-positioning {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--cool-gray);
+      max-width: 560px;
+      line-height: 1.6;
+      border-left: 2px solid var(--red);
+      padding-left: 20px;
+      margin-bottom: 48px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: var(--soft-white);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--red-dim); }
+
+    .btn-secondary {
+      color: var(--cool-gray);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 28px;
+      border: 1px solid var(--faint);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--cool-gray);
+      color: var(--soft-white);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 100px 48px;
+      border-top: 1px solid var(--graphite2);
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      color: var(--red);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--red);
+    }
+
+    h2 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: clamp(32px, 4vw, 52px);
+      letter-spacing: -1.5px;
+      line-height: 1.05;
+      color: var(--soft-white);
+      margin-bottom: 32px;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 16px;
+      color: var(--cool-gray);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .about-text p strong {
+      color: var(--soft-white);
+      font-weight: 500;
+    }
+
+    .career-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline-item {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--graphite2);
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 24px;
+    }
+
+    .timeline-item:first-child { border-top: 1px solid var(--graphite2); }
+
+    .timeline-year {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      color: var(--mid-gray);
+      letter-spacing: 1px;
+      padding-top: 3px;
+    }
+
+    .timeline-role {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--soft-white);
+      margin-bottom: 4px;
+    }
+
+    .timeline-org {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      color: var(--red);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── NEWSLETTER ── */
+    #newsletter {
+      background: var(--graphite);
+    }
+
+    .newsletter-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .newsletter-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .w4w-box {
+      width: 52px; height: 52px;
+      border: 2px solid var(--soft-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .w4w-box span {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--soft-white);
+    }
+
+    .w4w-box::after {
+      content: '';
+      position: absolute;
+      bottom: 6px; left: 8px;
+      width: 14px; height: 2px;
+      background: var(--red);
+    }
+
+    .w4w-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--soft-white);
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+
+    .w4w-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      color: var(--cool-gray);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .newsletter-desc {
+      font-size: 16px;
+      color: var(--cool-gray);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .newsletter-features {
+      list-style: none;
+      margin-bottom: 40px;
+    }
+
+    .newsletter-features li {
+      font-size: 14px;
+      color: var(--cool-gray);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--graphite2);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .newsletter-features li::before {
+      content: '→';
+      color: var(--red);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+    }
+
+    .newsletter-preview {
+      background: var(--black);
+      border: 1px solid var(--graphite2);
+      border-left: 3px solid var(--red);
+      padding: 32px;
+    }
+
+    .preview-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      color: var(--mid-gray);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .preview-section {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--graphite2);
+    }
+
+    .preview-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .preview-category {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      color: var(--red);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .preview-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--soft-white);
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+
+    .preview-body {
+      font-size: 12px;
+      color: var(--mid-gray);
+      line-height: 1.6;
+    }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 48px;
+    }
+
+    .service-card {
+      background: var(--graphite);
+      padding: 36px 32px;
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .service-card:hover { background: var(--graphite2); }
+
+    .service-number {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      color: var(--red);
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .service-title {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--soft-white);
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .service-desc {
+      font-size: 13px;
+      color: var(--cool-gray);
+      line-height: 1.7;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--graphite);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-text p {
+      font-size: 16px;
+      color: var(--cool-gray);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: var(--black);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .contact-link:hover { border-left-color: var(--red); }
+
+    .contact-link-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      color: var(--cool-gray);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .contact-link-value {
+      font-size: 13px;
+      color: var(--soft-white);
+    }
+
+    .contact-link-arrow {
+      color: var(--red);
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 48px;
+      border-top: 1px solid var(--graphite2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      color: var(--mid-gray);
+      letter-spacing: 1px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      color: var(--mid-gray);
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--soft-white); }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      #hero { padding: 0 24px 60px; }
+      section { padding: 60px 24px; }
+      .about-grid,
+      .newsletter-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .services-grid { grid-template-columns: 1fr; }
+      footer { padding: 24px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-mark">
+      <div class="nav-monogram"><span>RS</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#newsletter">Newsletter</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <div class="hero-label">Retail &amp; eCommerce Advisor</div>
+      <h1>Rick<br><em>Sauls.</em></h1>
+      <p class="hero-positioning">Helping retail and CPG brands bridge the gap between AI experimentation and operational scale.</p>
+      <div class="hero-ctas">
+        <a href="#newsletter" class="btn-primary">Read the Newsletter</a>
+        <a href="#contact" class="btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-label">Background</div>
+      <div class="about-grid">
+        <div class="about-text fade-in">
+          <h2>25 years at the intersection of retail, data, and operations.</h2>
+          <p>I started as a software developer at <strong>Walmart</strong>, building and leading Warehouse Management Systems across 27 distribution centers during a period of 5× network growth. That work taught me how enterprise-scale operations actually function — and where they break. I later moved into <strong>Merchandise Planning</strong>, managing budgeting, analysis, and promotional planning across a $3.2B food category.</p>
+          <p>From there I moved into agency work, where <strong>Walmart was my first client</strong> — leading innovation initiatives through technology across Global Business Process, HR Training, and Merchandise Operations. I then shifted into data management and BI for Tier 1 CPGs including <strong>Coca-Cola and Johnson &amp; Johnson</strong>, building dashboards and reporting from Walmart data.</p>
+          <p>I co-founded and exited two Amazon-focused companies: <strong>OmniiX</strong>, one of Amazon's first certified agency partners, acquired within six years — and <strong>chargeguard</strong>, a tech-first deductions management platform that recovered millions in chargebacks for vendors, also acquired.</p>
+          <p>Now I work at the intersection of <strong>retail, eCommerce, and AI</strong> — helping brands modernize operations and build the systems that create durable competitive advantage.</p>
+        </div>
+        <div class="career-timeline fade-in">
+          <div class="timeline-item">
+            <div class="timeline-year">1999–2012</div>
+            <div>
+              <div class="timeline-role">Developer → Team Lead, Merchandise Planning</div>
+              <div class="timeline-org">Walmart</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2012–2015</div>
+            <div>
+              <div class="timeline-role">Innovation &amp; Business Intelligence</div>
+              <div class="timeline-org">Agency — Coca-Cola, J&amp;J</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2015–2021</div>
+            <div>
+              <div class="timeline-role">Co-Founder → Acquisition</div>
+              <div class="timeline-org">OmniiX</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2019–2023</div>
+            <div>
+              <div class="timeline-role">Co-Founder → Acquisition</div>
+              <div class="timeline-org">chargeguard</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2023–</div>
+            <div>
+              <div class="timeline-role">Retail &amp; eCommerce Advisor</div>
+              <div class="timeline-org">AI · Automation · Operations</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section id="newsletter">
+    <div class="section-inner">
+      <div class="section-label">Intelligence</div>
+      <div class="newsletter-grid">
+        <div class="fade-in">
+          <div class="newsletter-mark">
+            <div class="w4w-box"><span>W4W</span></div>
+            <div>
+              <div class="w4w-title">WIRED FOR WALMART</div>
+              <div class="w4w-subtitle">Ecommerce Intelligence</div>
+            </div>
+          </div>
+          <p class="newsletter-desc">Walmart.com intelligence for brand and broker teams who don't have time to miss what changed. Every other week — what changed, why it matters, what to do.</p>
+          <ul class="newsletter-features">
+            <li>Advertising, Marketplace &amp; WFS updates</li>
+            <li>AI-scored business impact per item</li>
+            <li>Direct recommended actions — no fluff</li>
+            <li>Written from an operator's perspective</li>
+          </ul>
+          <a href="https://wired4walmart.beehiiv.com" target="_blank" class="btn-primary">Subscribe Free</a>
+        </div>
+        <div class="newsletter-preview fade-in">
+          <div class="preview-label">Sample — Issue 001</div>
+          <div class="preview-section">
+            <div class="preview-category">🛒 Marketplace</div>
+            <div class="preview-title">Repricer Redesign Unlocks New Strategy Controls</div>
+            <div class="preview-body">The new competitive insights let you see when you're over-discounting — and the enhanced controls let you protect margin while staying competitive.</div>
+          </div>
+          <div class="preview-section">
+            <div class="preview-category">📦 WFS</div>
+            <div class="preview-title">Pesticides Now Eligible for Walmart Fulfillment</div>
+            <div class="preview-body">A major unlock for lawn and garden brands. If you've been self-fulfilling pesticides, the margin math just changed dramatically.</div>
+          </div>
+          <div class="preview-section">
+            <div class="preview-category">🎯 Top Action This Week</div>
+            <div class="preview-title">Audit your repricing rules against the new interface — don't migrate settings blindly.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="section-label">Work</div>
+      <h2>Where I can help.</h2>
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-number">01</div>
+          <div class="service-title">Walmart.com Strategy &amp; Operations</div>
+          <div class="service-desc">Helping brand and broker teams build the systems, processes, and intelligence infrastructure to manage Walmart.com as a real business — not an afterthought.</div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-number">02</div>
+          <div class="service-title">AI &amp; Automation Implementation</div>
+          <div class="service-desc">Designing and building AI-driven workflows that create operational capability — not just individual productivity. From data collection to decision support.</div>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-number">03</div>
+          <div class="service-title">Retail Intelligence Systems</div>
+          <div class="service-desc">Building the reporting, monitoring, and analysis infrastructure that turns raw retail data into actionable business intelligence for brands and operators.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-label">Contact</div>
+      <div class="contact-grid">
+        <div class="contact-text fade-in">
+          <h2>Let's talk.</h2>
+          <p>If you're managing Walmart.com and feel like you're operating below potential — or if you're looking to modernize operations with AI and automation — I'd like to hear about it.</p>
+          <a href="mailto:ricksauls@cox.net" class="btn-primary">Send a Message</a>
+        </div>
+        <div class="contact-links fade-in">
+          <a href="mailto:ricksauls@cox.net" class="contact-link">
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-value">ricksauls@cox.net</span>
+            <span class="contact-link-arrow">→</span>
+          </a>
+          <a href="https://www.linkedin.com/in/rick-sauls-b3aa009/" target="_blank" class="contact-link">
+            <span class="contact-link-label">LinkedIn</span>
+            <span class="contact-link-value">linkedin.com/in/rick-sauls-b3aa009</span>
+            <span class="contact-link-arrow">→</span>
+          </a>
+          <a href="https://wired4walmart.beehiiv.com" target="_blank" class="contact-link">
+            <span class="contact-link-label">Newsletter</span>
+            <span class="contact-link-value">Wired For Walmart</span>
+            <span class="contact-link-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-copy">© 2026 Rick Sauls. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#newsletter">Newsletter</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // Fade in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
