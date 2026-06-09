@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rick Sauls — Career Profile</title>
+  <meta name="description" content="Building at the intersection of retail, technology, and eCommerce.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #050505;
+      --graphite: #121212;
+      --graphite2: #1A1A1A;
+      --faint: #2A2A2A;
+      --mid-gray: #4A4A4A;
+      --cool-gray: #8C8C8C;
+      --soft-white: #F3F3F3;
+      --red: #FF3B30;
+      --red-dim: #D8322A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--soft-white);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 48px;
+      background: rgba(5,5,5,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--graphite2);
+    }
+
+    .nav-mark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-monogram {
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--soft-white);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+
+    .nav-monogram span {
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      color: var(--soft-white);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-monogram::after {
+      content: '';
+      position: absolute;
+      bottom: 4px; left: 6px;
+      width: 10px; height: 2px;
+      background: var(--red);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--cool-gray);
+      text-decoration: none;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--soft-white); }
+
+    /* ── HERO ── */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 140px 48px 80px;
+    }
+
+    .hero-label {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--red);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-label::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--red);
+    }
+
+    .hero-headline {
+      font-size: clamp(2.2rem, 5.5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      max-width: 820px;
+      margin-bottom: 28px;
+      color: var(--soft-white);
+    }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+      color: var(--cool-gray);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .hero-sub-detail {
+      font-size: 0.88rem;
+      color: var(--mid-gray);
+      max-width: 480px;
+      line-height: 1.65;
+      margin-bottom: 64px;
+    }
+
+    .stats {
+      display: flex;
+      gap: 72px;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .stat { text-align: center; }
+
+    .stat-value {
+      display: block;
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      color: var(--soft-white);
+    }
+
+    .stat-label {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--cool-gray);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 10px;
+      max-width: 120px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: var(--graphite);
+      padding: 80px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-inner {
+      max-width: 920px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 52px;
+    }
+
+    .headshot-fallback {
+      width: 148px;
+      height: 148px;
+      border-radius: 10px;
+      background: var(--graphite2);
+      border: 1px solid var(--faint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mid-gray);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      flex-shrink: 0;
+      font-weight: 800;
+      font-size: 24px;
+    }
+
+    .about-name {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--soft-white);
+    }
+
+    .about-title {
+      font-size: 0.92rem;
+      color: var(--cool-gray);
+      margin-bottom: 18px;
+    }
+
+    .about-bio {
+      font-size: 0.92rem;
+      color: var(--cool-gray);
+      line-height: 1.75;
+      max-width: 520px;
+    }
+
+    /* ── CURRENTLY ── */
+    .currently-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 0 60px;
+    }
+
+    .currently-inner {
+      max-width: 920px;
+      width: 100%;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 18px 0;
+      border-top: 1px solid var(--graphite2);
+      border-bottom: 1px solid var(--graphite2);
+    }
+
+    .currently-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .currently-text {
+      font-size: 0.88rem;
+      color: var(--cool-gray);
+      line-height: 1.5;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline-wrap {
+      max-width: 920px;
+      margin: 20px auto 0;
+      padding: 40px 60px 60px 164px;
+      position: relative;
+    }
+
+    .timeline-wrap::before {
+      content: '';
+      position: absolute;
+      left: 103px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--mid-gray);
+    }
+
+    .timeline-entry {
+      position: relative;
+      padding-bottom: 88px;
+    }
+
+    .timeline-entry:last-child { padding-bottom: 0; }
+
+    .timeline-entry::before {
+      content: '';
+      position: absolute;
+      left: -64px;
+      top: 5px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(243,243,243,0.6);
+    }
+
+    .entry-date {
+      position: absolute;
+      left: -158px;
+      top: 3px;
+      font-size: 0.68rem;
+      line-height: 1;
+      color: var(--cool-gray);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .entry-category {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      margin-bottom: 18px;
+    }
+
+    .entry-headline {
+      font-size: clamp(1.5rem, 3.2vw, 2.3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+      max-width: 680px;
+      color: var(--soft-white);
+    }
+
+    .entry-body {
+      font-size: 0.93rem;
+      color: var(--cool-gray);
+      line-height: 1.85;
+      max-width: 660px;
+    }
+
+    .entry-body p + p { margin-top: 18px; }
+
+    /* ── DIG DEEPER ── */
+    .dig-deeper-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .dig-deeper-chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .dig-deeper-chip {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--mid-gray);
+      background: var(--graphite2);
+      border: 1px solid var(--faint);
+      border-radius: 100px;
+      padding: 3px 9px;
+    }
+
+    .dig-deeper {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--red);
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: opacity 0.2s;
+    }
+
+    .dig-deeper:hover { opacity: 0.7; }
+    .dig-deeper svg { transition: transform 0.35s ease; }
+    .dig-deeper.open svg { transform: rotate(180deg); }
+
+    .entry-details {
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: height 0.45s ease, opacity 0.3s ease;
+    }
+
+    .details-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 18px;
+    }
+
+    .detail-card {
+      background: var(--graphite2);
+      border: 1px solid var(--faint);
+      border-left: 2px solid var(--red);
+      border-radius: 8px;
+      padding: 18px 20px;
+    }
+
+    .detail-card-title {
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      margin-bottom: 10px;
+    }
+
+    .detail-card-subtitle {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--cool-gray);
+      margin: 16px 0 8px;
+    }
+
+    .detail-card-subtitle:first-child { margin-top: 0; }
+
+    .detail-card-body {
+      font-size: 0.875rem;
+      color: var(--cool-gray);
+      line-height: 1.68;
+    }
+
+    .detail-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .detail-card ul li {
+      font-size: 0.875rem;
+      color: var(--cool-gray);
+      line-height: 1.6;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .detail-card ul li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--mid-gray);
+    }
+
+    /* ── CLOSING ── */
+    .closing {
+      background: var(--graphite);
+      padding: 120px 48px;
+      text-align: center;
+    }
+
+    .closing-text {
+      font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+      line-height: 1.65;
+      color: var(--soft-white);
+      font-weight: 400;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 48px;
+      border-top: 1px solid var(--graphite2);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy {
+      font-size: 10px;
+      color: var(--mid-gray);
+      letter-spacing: 1px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a, .footer-links span {
+      font-size: 10px;
+      color: var(--mid-gray);
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--soft-white); }
+
+    /* ── ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .stats { gap: 32px; }
+      .about { padding: 60px 24px; }
+      .about-inner { flex-direction: column; gap: 28px; align-items: flex-start; }
+      .timeline-wrap { padding: 40px 24px 60px 24px; }
+      .timeline-wrap::before { display: none; }
+      .timeline-entry::before { display: none; }
+      .timeline-entry { padding-bottom: 56px; border-left: 1px solid var(--mid-gray); padding-left: 20px; }
+      .entry-date { position: static; display: block; margin-bottom: 10px; }
+      .closing { padding: 80px 24px; }
+      footer { padding: 24px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-mark">
+      <div class="nav-monogram"><span>RS</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#newsletter">Newsletter</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="career.html" class="active">Career</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-label">Career Profile</div>
+    <h1 class="hero-headline">Building at the Intersection of Retail, Technology, and eCommerce</h1>
+    <p class="hero-sub">Experience across enterprise retail, agency environments, and entrepreneurship — spanning systems, operations, and growth.</p>
+    <p class="hero-sub-detail">From developing internal tools at one of the world's largest retailers to co-founding and exiting two eCommerce companies.</p>
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-value">2</span>
+        <span class="stat-label">Companies Built &amp; Sold</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">25+</span>
+        <span class="stat-label">Years Across Retail &amp; eCommerce</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">→</span>
+        <span class="stat-label">Enterprise → Agency → Founder</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about reveal">
+    <div class="about-inner">
+      <div class="headshot-wrap" style="flex-shrink:0;">
+        <img src="rick-sauls-headshot.png" alt="Rick Sauls" style="width:148px;height:148px;border-radius:10px;object-fit:cover;object-position:center top;display:block;">
+      </div>
+      <div>
+        <div class="about-name">Rick Sauls</div>
+        <div class="about-title">Enterprise Retail → eCommerce Operator → Founder</div>
+        <div class="about-bio">Built across systems, analytics, and operations — from Fortune 1 infrastructure to scaling and exiting two companies.</div>
+        <a href="rick-sauls-resume.pdf" download style="display:inline-flex;align-items:center;gap:8px;margin-top:20px;background:var(--red);color:var(--soft-white);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;padding:12px 24px;transition:background 0.2s;" onmouseover="this.style.background='#D8322A'" onmouseout="this.style.background='#FF3B30'">↓ Download Resume</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURRENTLY -->
+  <div class="currently-wrap reveal">
+    <div class="currently-inner">
+      <span class="currently-label">Currently Interested In...</span>
+      <span class="currently-text">Keeping busy at the crossroads of retail, eCommerce, and AI — always open to a great conversation and the right opportunity.</span>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline-wrap">
+
+    <div class="timeline-entry reveal">
+      <span class="entry-date">1999–2012</span>
+      <div class="entry-category">Enterprise Retail Foundation</div>
+      <h2 class="entry-headline">Built inside the operational backbone of Walmart's retail ecosystem.</h2>
+      <div class="entry-body">
+        <p>I began my career at Walmart while completing my studies in Computer Information Systems &amp; Quantitative Analysis, initially joining as an intern supporting warehouse and distribution systems.</p>
+        <p>That early exposure to enterprise-scale logistics and retail infrastructure shaped how I think about systems, scale, and operational efficiency.</p>
+        <p>Following my internship, I transitioned into a full-time role where I worked on tools supporting warehouse operations, merchandising workflows, and financial planning systems used by category teams.</p>
+      </div>
+      <div class="dig-deeper-row">
+        <button class="dig-deeper" aria-expanded="false">
+          Dig Deeper
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="dig-deeper-chips">
+          <span class="dig-deeper-chip">27 Distribution Centers</span>
+          <span class="dig-deeper-chip">5× DC Network Growth</span>
+          <span class="dig-deeper-chip">$3.2B Category Management</span>
+        </div>
+      </div>
+      <div class="entry-details">
+        <div class="details-inner">
+          <div class="detail-card">
+            <div class="detail-card-title">Business Impact</div>
+            <div class="detail-card-body">In Distribution &amp; Logistics, the work centered on building tools that drove efficiency and reduced cost — the core mandate of a cost-center business unit. Scale was also expanding fast: the distribution network saw more than 5× growth in seven years, and the systems my team built had to keep cost performance improving as the footprint multiplied.</div>
+            <div class="detail-card-body" style="margin-top:12px">In Merchandise Planning, the impact shifted to top-line and margin levers — driving sales, expanding profit margins, and optimizing inventory turns across large food categories. Each is a core driver of a successful retail business, and the work meant translating financial analysis into clear, actionable guidance for the buyer and merchant teams making the calls.</div>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Key Initiatives</div>
+            <div class="detail-card-subtitle">Warehouse Management Systems</div>
+            <ul>
+              <li>As a software developer and later team lead, delivered solutions across Receiving, Replenishment, Order-Filling, Load Planning, Shipping, and Quality Assurance.</li>
+              <li>Integrated voice recognition, wireless touchscreens, and wireless scanners — leveraging hands-free and mobile technology as key drivers of operational efficiency.</li>
+            </ul>
+            <div class="detail-card-subtitle">Merchandise Planning</div>
+            <ul>
+              <li>Annual budgeting of sales, profit, inventory turns, and other key metrics by category and subcategory at the week level.</li>
+              <li>Ongoing performance analysis against plan at weekly, monthly, quarterly, and annual levels — surfacing what was working, where to adjust, and translating insights into action.</li>
+              <li>Financial analysis supporting annual category resets, aligning assortment and layout changes with annual financial goals.</li>
+              <li>Promotional and feature planning support, covering planning, execution, monitoring, and performance reporting.</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">What It Built</div>
+            <div class="detail-card-body">This chapter established the operational and systems fluency that shaped everything that followed — a deep understanding of how inventory moves at scale, how cost centers are managed for efficiency, and how technology either accelerates or constrains large organizations.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-entry reveal">
+      <span class="entry-date">2012–2015</span>
+      <div class="entry-category">Agency, Innovation &amp; Data Strategy</div>
+      <h2 class="entry-headline">Innovation and data strategy for the world's biggest retailers and CPGs.</h2>
+      <div class="entry-body">
+        <p>After Walmart, I spent three years in the agency world across two firms. At <strong style="color:var(--soft-white)">Rockfish</strong>, my first role focused on delivering innovation to Walmart across the organization — with Walmart as my client — partnering with teams spanning Global Business Process, Human Resources Training &amp; Development, and Merchandise Operations. At <strong style="color:var(--soft-white)">Orchestro</strong>, my second role centered on data management and business intelligence solutions for some of the world's largest CPGs — Coca-Cola and Johnson &amp; Johnson among them.</p>
+      </div>
+      <div class="dig-deeper-row">
+        <button class="dig-deeper" aria-expanded="false">
+          Dig Deeper
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="dig-deeper-chips">
+          <span class="dig-deeper-chip">Rockfish — Walmart Innovation</span>
+          <span class="dig-deeper-chip">Orchestro — Coca-Cola · J&amp;J</span>
+        </div>
+      </div>
+      <div class="entry-details">
+        <div class="details-inner">
+          <div class="detail-card">
+            <div class="detail-card-title">Business Impact</div>
+            <div class="detail-card-body">At the first agency, the business impact mirrored my earlier work in Walmart Information Technology — driving operational efficiency through emerging technology. The mandate was familiar: identify where the right tools could remove friction and create lift across enterprise teams.</div>
+            <div class="detail-card-body" style="margin-top:12px">At the second agency, the impact shifted to visibility. The work centered on translating the massive volumes of Walmart data into clear, actionable intelligence that gave CPG clients a sharper basis for the decisions in front of them.</div>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Key Initiatives</div>
+            <div class="detail-card-subtitle">Innovation — Rockfish · Walmart</div>
+            <ul>
+              <li>Identified, sold, and delivered innovation initiatives at Walmart through close collaboration with internal agency partners and Walmart stakeholders.</li>
+              <li>Applied emerging mobile and web technologies to expand what was possible across enterprise workflows.</li>
+            </ul>
+            <div class="detail-card-subtitle">Data Management &amp; BI — Orchestro · Coca-Cola · J&amp;J</div>
+            <ul>
+              <li>Partnered with Tier 1 CPG clients to scope and deliver tailored data and BI engagements.</li>
+              <li>Delivered end-to-end data work — ingestion, cleansing, integration, and presentation.</li>
+              <li>Built performance dashboards, reporting, insights, and analytics that translated raw data into decisions clients could act on.</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">What It Built</div>
+            <div class="detail-card-body">While both roles were rooted in technology and data, the work also introduced a new dimension: sales. The experience of pitching solutions, growing accounts, and owning client relationships expanded my perspective in ways that later shaped my approach to entrepreneurship.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-entry reveal">
+      <span class="entry-date">2015–2023</span>
+      <div class="entry-category">Building &amp; Scaling Companies</div>
+      <h2 class="entry-headline">Built, scaled, and exited two Amazon-focused eCommerce companies.</h2>
+      <div class="entry-body">
+        <p>Over eight years, I co-founded and scaled two Amazon-focused eCommerce companies from the ground up. The first, OmniiX, was a services company and one of Amazon's first certified agency partners — grown to acquisition within six years. The second, chargeguard, was a tech-first company focused on Amazon deductions management, helping vendors recover the chargebacks and deductions that erode margins — also acquired.</p>
+        <p>Across both companies, the work was entrepreneurship in its truest form — setting vision, driving sales, running operations, building teams, and adapting as Amazon evolved.</p>
+      </div>
+      <div class="dig-deeper-row">
+        <button class="dig-deeper" aria-expanded="false">
+          Dig Deeper
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="dig-deeper-chips">
+          <span class="dig-deeper-chip">OmniiX → Acquisition</span>
+          <span class="dig-deeper-chip">chargeguard → Acquisition</span>
+          <span class="dig-deeper-chip">Amazon Focused</span>
+        </div>
+      </div>
+      <div class="entry-details">
+        <div class="details-inner">
+          <div class="detail-card">
+            <div class="detail-card-title">Business Impact</div>
+            <div class="detail-card-body">At OmniiX, our impact showed up directly in our clients' growth — combining Amazon expertise, retail knowledge, and agency service to deliver sales growth that outpaced even Amazon's rapid platform expansion. In one case taking a client from $60K to $1.5M in annual revenue.</div>
+            <div class="detail-card-body" style="margin-top:12px">At chargeguard, the impact was a direct deposit to the bank. Through innovative technology and operational expertise, we recovered millions of dollars for clients — money that had otherwise been lost to deductions and chargebacks.</div>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Key Initiatives</div>
+            <div class="detail-card-subtitle">OmniiX</div>
+            <ul>
+              <li>Built the business from the ground up: validated the market, sold the vision, stood up operations, and hired and trained the team to deliver.</li>
+              <li>Stayed ahead of changes on the Amazon platform and translated each shift into a competitive edge for clients.</li>
+            </ul>
+            <div class="detail-card-subtitle">chargeguard</div>
+            <ul>
+              <li>Created an online training course that generated early revenue and developed a network of 200+ sales and marketing specialists.</li>
+              <li>Developed proprietary technology for Amazon vendor deductions management — capturing, organizing, and surfacing deductions data as the foundation for dispute management and recovery.</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">What It Built</div>
+            <div class="detail-card-body">Founding, scaling, and exiting two businesses builds something no role inside another company could — the conviction to start, the resilience to operate under uncertainty, and the judgment to know when to push, when to adapt, and when to let go. Doing it twice is the only way to know the first time wasn't luck.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-entry reveal">
+      <span class="entry-date">2023–Present</span>
+      <div class="entry-category">Current Focus</div>
+      <h2 class="entry-headline">Applying retail, eCommerce, and technology experience — now through an AI lens.</h2>
+      <div class="entry-body">
+        <p>My current work is a continuation of everything that came before it — building the systems, workflows, and operational infrastructure that help businesses run better in retail and marketplace environments. AI is now central to how that work gets done. I work with brand owners, retailer service providers, and retailers to modernize and scale their business operations.</p>
+      </div>
+      <div class="dig-deeper-row">
+        <button class="dig-deeper" aria-expanded="false">
+          Dig Deeper
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="dig-deeper-chips">
+          <span class="dig-deeper-chip">500+ Products Onboarded</span>
+          <span class="dig-deeper-chip">Multiple Workflows Automated</span>
+          <span class="dig-deeper-chip">AI-Driven Intelligence Systems</span>
+        </div>
+      </div>
+      <div class="entry-details">
+        <div class="details-inner">
+          <div class="detail-card">
+            <div class="detail-card-title">Business Impact</div>
+            <div class="detail-card-body">The impact stake is the same one I've been working on my entire career — making the business run better through more efficient execution, smarter workflow management, and sharper performance monitoring. What's different now is the leverage AI brings to each of those domains. The mandate hasn't changed. The toolkit has.</div>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">Key Initiatives</div>
+            <ul>
+              <li>Staying current with how AI is evolving — separating real capability gains from hype, and continuously identifying where AI can deliver meaningful business impact.</li>
+              <li>Building solutions where well-designed software wraps AI capabilities — turning emerging models into dependable, production-grade tools that deliver real value.</li>
+            </ul>
+          </div>
+          <div class="detail-card">
+            <div class="detail-card-title">What It Built</div>
+            <div class="detail-card-body">AI is changing faster than I can describe it, which makes writing a "what it built" section for a chapter still in motion a strange exercise. But even mid-stream the contours are visible: sharper judgment on where AI creates real leverage and where it just creates noise, and a growing conviction that the next decade of retail will reward those who can pair deep operational experience with practical AI fluency.</div>
+            <div class="detail-card-body" style="margin-top:12px">I'll have a better summary once I'm not in the middle of it. Probably.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CLOSING -->
+  <section class="closing">
+    <p class="closing-text reveal">Enterprise to agency to founder — the thread has always been the same: build things that make the business work better.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-copy">© 2026 Rick Sauls. All rights reserved.</div>
+    <nav class="footer-links">
+      <a href="mailto:ricksauls@cox.net">ricksauls@cox.net</a>
+      <span>479-366-1222</span>
+      <a href="https://www.linkedin.com/in/rick-sauls-b3aa009/" target="_blank">LinkedIn</a>
+    </nav>
+  </footer>
+
+  <script>
+    (function () {
+      var observer = new IntersectionObserver(function (items) {
+        items.forEach(function (item) {
+          if (item.isIntersecting) {
+            item.target.classList.add('visible');
+          } else {
+            item.target.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0.08 });
+
+      document.querySelectorAll('.reveal').forEach(function (el) {
+        observer.observe(el);
+      });
+
+      document.querySelectorAll('.dig-deeper').forEach(function (btn) {
+        var row = btn.closest('.dig-deeper-row') || btn;
+        var details = row.nextElementSibling;
+        while (details && !details.classList.contains('entry-details')) {
+          details = details.nextElementSibling;
+        }
+        if (!details) return;
+
+        btn.addEventListener('click', function () {
+          var isOpen = btn.classList.contains('open');
+          if (isOpen) {
+            details.style.height = details.scrollHeight + 'px';
+            details.getBoundingClientRect();
+            details.style.height = '0';
+            details.style.opacity = '0';
+            btn.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.childNodes[0].textContent = 'Dig Deeper ';
+          } else {
+            details.style.height = details.scrollHeight + 'px';
+            details.style.opacity = '1';
+            btn.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+            btn.childNodes[0].textContent = 'Show Less ';
+            details.addEventListener('transitionend', function handler(e) {
+              if (e.propertyName === 'height') {
+                details.style.height = 'auto';
+                details.removeEventListener('transitionend', handler);
+              }
+            });
+          }
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
