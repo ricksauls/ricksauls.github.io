@@ -34,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* Override all font-family declarations to Inter */
     .nav-links a, .hero-label, .hero-label::before,
     .section-label, .timeline-year, .timeline-org,
     .service-number, .preview-label, .preview-category,
@@ -550,16 +549,23 @@
       color: var(--cool-gray);
       letter-spacing: 2px;
       text-transform: uppercase;
+      width: 120px;
+      flex-shrink: 0;
     }
 
     .contact-link-value {
       font-size: 13px;
       color: var(--soft-white);
+      flex: 1;
+      text-align: center;
     }
 
     .contact-link-arrow {
       color: var(--red);
       font-family: 'Inter', sans-serif;
+      width: 20px;
+      text-align: right;
+      flex-shrink: 0;
     }
 
     /* ── FOOTER ── */
@@ -662,7 +668,7 @@
         <div class="about-text fade-in">
           <h2>25 years at the intersection of retail, technology, and eCommerce.</h2>
           <p>I started as a software developer at <strong>Walmart</strong>, building and leading Warehouse Management Systems across 27 distribution centers during a period of 5× network growth. That work taught me how enterprise-scale operations actually function — and where they break. I later moved into <strong>Merchandise Planning</strong>, managing budgeting, analysis, and promotional planning across a $3.2B food category.</p>
-          <p>From there I moved into agency work, where Walmart was my first client — leading innovation initiatives through technology across Global Business Process, HR Training, and Merchandise Operations. I then shifted into data management and BI for Tier 1 CPGs including Coca-Cola and Johnson & Johnson, building data pipelines, dashboards, and reporting from Walmart data that turned raw retailer data into actionable intelligence for some of the world's largest brands.</p>
+          <p>From there I moved into agency work, where Walmart was my first client — leading innovation initiatives through technology across Global Business Process, HR Training, and Merchandise Operations. I then shifted into data management and BI for Tier 1 CPGs including Coca-Cola and Johnson &amp; Johnson, building data pipelines, dashboards, and reporting from Walmart data that turned raw retailer data into actionable intelligence for some of the world's largest brands.</p>
           <p>I co-founded and exited two Amazon-focused companies: <strong>OmniiX</strong>, one of Amazon's first certified agency partners, acquired within six years — and <strong>chargeguard</strong>, a tech-first deductions management platform that recovered millions in chargebacks for vendors, also acquired.</p>
           <p>Now I work in the <strong>retail, eCommerce, and AI spaces</strong> — helping brands modernize operations and build the systems that create durable competitive advantage.</p>
         </div>
@@ -828,7 +834,6 @@
   </footer>
 
   <script>
-    // Fade in on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(el => {
         if (el.isIntersecting) {
