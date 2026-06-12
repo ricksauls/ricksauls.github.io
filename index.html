@@ -302,7 +302,7 @@
     .timeline-year {
       font-family: 'Inter', sans-serif;
       font-size: 10px;
-      color: var(--mid-gray);
+      color: var(--cool-gray);
       letter-spacing: 1px;
       padding-top: 3px;
     }
@@ -423,7 +423,7 @@
     .preview-label {
       font-family: 'Inter', sans-serif;
       font-size: 9px;
-      color: var(--mid-gray);
+      color: var(--cool-gray);
       letter-spacing: 2px;
       text-transform: uppercase;
       margin-bottom: 20px;
@@ -460,7 +460,7 @@
 
     .preview-body {
       font-size: 12px;
-      color: var(--mid-gray);
+      color: var(--cool-gray);
       line-height: 1.6;
     }
 
@@ -477,7 +477,21 @@
       padding: 36px 32px;
       position: relative;
       transition: background 0.2s;
+      display: flex;
+      flex-direction: column;
     }
+
+    .service-link {
+      font-size: 11px;
+      color: var(--red);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: color 0.2s;
+    }
+
+    .service-link:hover { color: var(--soft-white); }
 
     .service-card:hover { background: var(--graphite2); }
 
@@ -580,7 +594,7 @@
     .footer-copy {
       font-family: 'Inter', sans-serif;
       font-size: 10px;
-      color: var(--mid-gray);
+      color: var(--cool-gray);
       letter-spacing: 1px;
     }
 
@@ -592,7 +606,7 @@
     .footer-links a {
       font-family: 'Inter', sans-serif;
       font-size: 10px;
-      color: var(--mid-gray);
+      color: var(--cool-gray);
       text-decoration: none;
       letter-spacing: 1px;
       transition: color 0.2s;
@@ -771,6 +785,7 @@
           <div class="service-number">02</div>
           <div class="service-title">AI &amp; Automation Implementation</div>
           <div class="service-desc">Designing and building AI-driven workflows that create operational capability — not just individual productivity. From data collection to decision support.</div>
+          <a href="demos.html" class="service-link">Learn More →</a>
         </div>
         <div class="service-card fade-in">
           <div class="service-number">03</div>
