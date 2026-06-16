@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -355,11 +356,29 @@
     }
 
     .stat-box {
-      background: var(--graphite);
-      border: 1px solid var(--graphite2);
-      padding: 14px 20px;
+      background: var(--graphite2);
+      border: 1px solid var(--faint);
+      padding: 20px 16px;
       flex: 1;
       min-width: 110px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .stat-icon {
+      color: var(--red);
+      display: flex;
+      align-items: center;
+    }
+
+    .stat-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--red);
+      stroke-width: 1.5;
+      fill: none;
     }
 
     .stat-value {
@@ -367,14 +386,57 @@
       font-size: 22px;
       color: var(--soft-white);
       letter-spacing: -0.5px;
+      line-height: 1;
     }
 
     .stat-label {
       font-size: 10px;
       color: var(--cool-gray);
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      margin-top: 4px;
+    }
+
+    .example-callout {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--graphite2);
+      border-left: 3px solid var(--red);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+
+    .example-callout-icon {
+      color: var(--red);
+      flex-shrink: 0;
+    }
+
+    .example-callout-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--red);
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    .example-callout-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .example-callout-value {
+      font-weight: 800;
+      font-size: 24px;
+      color: var(--soft-white);
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .example-callout-label {
+      font-size: 12px;
+      color: var(--cool-gray);
+      line-height: 1.4;
     }
 
     .example-visual {
@@ -387,6 +449,7 @@
       background: var(--graphite);
       border: 1px solid var(--graphite2);
       overflow: hidden;
+      border-radius: 6px;
     }
 
     .visual-frame img {
@@ -421,10 +484,13 @@
     }
 
     .lightbox-overlay img {
-      max-width: 100%;
-      max-height: 100%;
+      width: 85vw;
+      max-width: 1200px;
+      height: auto;
+      max-height: 85vh;
       object-fit: contain;
       border: 1px solid var(--graphite2);
+      border-radius: 6px;
     }
 
     .lightbox-close {
@@ -698,6 +764,13 @@
         <div>
           <div class="example-tag">Case Study 01 — Walmart.com</div>
           <div class="example-title">Walmart.com Marketplace Intelligence</div>
+          <div class="example-callout">
+            <div class="example-callout-icon"><i data-lucide="file-bar-chart-2"></i></div>
+            <div class="example-callout-text">
+              <div class="example-callout-value">23-Page Executive Report</div>
+              <div class="example-callout-label">Generated automatically every cycle — zero manual effort</div>
+            </div>
+          </div>
           <p class="example-desc">An AI-powered marketplace intelligence workflow that automatically transforms Walmart.com performance data into executive-ready insights, recommendations, and action plans. What used to require a team manually pulling reports now runs as a zero-touch pipeline: collection, scoring, and stakeholder-ready output, every day and every week, without anyone touching a spreadsheet.</p>
           <ul class="example-features">
             <li>Daily keyword ranking &amp; search visibility collection</li>
@@ -708,14 +781,17 @@
           </ul>
           <div class="example-stats">
             <div class="stat-box">
+              <div class="stat-icon"><i data-lucide="check-circle-2"></i></div>
               <div class="stat-value">100%</div>
               <div class="stat-label">Automated Workflow</div>
             </div>
             <div class="stat-box">
+              <div class="stat-icon"><i data-lucide="calendar-check"></i></div>
               <div class="stat-value">Daily</div>
               <div class="stat-label">Data Collection</div>
             </div>
             <div class="stat-box">
+              <div class="stat-icon"><i data-lucide="send"></i></div>
               <div class="stat-value">Weekly</div>
               <div class="stat-label">Executive Reporting</div>
             </div>
@@ -735,6 +811,13 @@
         <div>
           <div class="example-tag">Case Study 02 — Walmart.com</div>
           <div class="example-title">Walmart.com Competitive Intelligence</div>
+          <div class="example-callout">
+            <div class="example-callout-icon"><i data-lucide="activity"></i></div>
+            <div class="example-callout-text">
+              <div class="example-callout-value">24/7 Competitive Monitoring</div>
+              <div class="example-callout-label">Continuous tracking across brands, products, and keywords</div>
+            </div>
+          </div>
           <p class="example-desc">An AI-powered competitive intelligence platform that continuously tracks Walmart.com performance against competing brands and products. Users configure custom tracking groups, competitor brands, products, and keyword sets, while the platform automatically collects marketplace data, benchmarks performance, monitors content changes, and surfaces competitive trends through an interactive web application.</p>
           <p class="example-desc">What traditionally requires teams to manually monitor search rankings, compare product pages, audit competitor content, and track marketplace changes is transformed into a centralized intelligence platform. Stakeholders gain daily visibility into search performance, share of search, pricing, reviews, ratings, content updates, and new competitor activity — all without relying on spreadsheets or manual audits.</p>
           <ul class="example-features">
@@ -746,16 +829,24 @@
           </ul>
           <div class="example-stats">
             <div class="stat-box">
+              <div class="stat-icon"><i data-lucide="clock"></i></div>
               <div class="stat-value">24/7</div>
               <div class="stat-label">Competitive Monitoring</div>
             </div>
             <div class="stat-box">
+              <div class="stat-icon"><i data-lucide="calendar-check"></i></div>
               <div class="stat-value">Daily</div>
-              <div class="stat-label">Data Collection</div>
+              <div class="stat-label">Marketplace Collection</div>
             </div>
             <div class="stat-box">
-              <div class="stat-value">100%</div>
-              <div class="stat-label">Automated</div>
+              <div class="stat-icon"><i data-lucide="sliders"></i></div>
+              <div class="stat-value">Custom</div>
+              <div class="stat-label">Tracking Groups</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-icon"><i data-lucide="trending-up"></i></div>
+              <div class="stat-value">Real-Time</div>
+              <div class="stat-label">Competitive Insights</div>
             </div>
           </div>
         </div>
@@ -863,6 +954,15 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    });
+
+    // Fallback if DOMContentLoaded already fired
+    if (document.readyState !== 'loading') {
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
 
     function openLightbox(src, alt) {
       const lb = document.getElementById('lightbox');
